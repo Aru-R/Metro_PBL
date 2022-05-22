@@ -1,4 +1,4 @@
-<% layout('layouts/boilerplate')%>
+<% layout('../layouts/boilerplate')%>
 
 <!--Main wrapper-->
 <div class="wrapper">
@@ -6,20 +6,20 @@
 
 	<!--form container-->
 	<div class="form-container">
-		<form action="" method="post">
+		<form action="/users" method="POST">
 			<!--flexbox and it's items-->
 			<div class="flex">
 				<div class="flex-item">
 					<!--full name field-->
 					<div class="field-container">
-						<label for="full-name"
+						<label for="fullname"
 							>Full Name: <span class="required">*</span></label
 						>
 						<input
 							type="text"
-							name="full-name"
+							name="fullname"
 							pattern="^([a-zA-Z]{2,} ?)+$"
-							id="full-name"
+							id="fullname"
 							placeholder="Your full name"
 							required="required"
 						/>
@@ -43,14 +43,14 @@
 
 					<!--confirm email field-->
 					<div class="field-container">
-						<label for="confirm-email"
+						<label for="confirmemail"
 							>Confirm email:
 							<span class="required">*</span></label
 						>
 						<input
 							type="email"
-							name="confirm-email"
-							id="confirm-email"
+							name="confirmemail"
+							id="confirmemail"
 							placeholder="Re-enter email"
 							required="required"
 						/>
@@ -60,14 +60,14 @@
 				<div class="flex-item">
 					<!--contact no field-->
 					<div class="field-container">
-						<label for="contact-no"
+						<label for="contactno"
 							>Contact no.: <span class="required">*</span></label
 						>
 						<input
 							type="tel"
-							name="contact-no"
+							name="contactno"
 							pattern="[0-9]{10}"
-							id="contact-no"
+							id="contactno"
 							placeholder="Mobile number"
 							required="required"
 						/>
@@ -99,16 +99,16 @@
 
 					<!--confirm password field-->
 					<div class="field-container">
-						<label for="confirm-passkey"
+						<label for="confirmpasskey"
 							>Confirm password:
 							<span class="required">*</span></label
 						>
 						<div class="passkey-box">
 							<input
 								type="password"
-								name="confirm-passkey"
+								name="confirmpasskey"
 								class="passkey"
-								id="confirm-passkey"
+								id="confirmpasskey"
 								placeholder="Re-enter password"
 								required="required"
 							/>
@@ -340,7 +340,7 @@
 	(() => {
 		//full name validation
 		document
-			.querySelector("#full-name")
+			.querySelector("#fullname")
 			.addEventListener("blur", (event) => {
 				let err = document.querySelector(".error-messg");
 				err.innerText = "";
@@ -367,7 +367,7 @@
 
 		//to validate confirm email
 		document
-			.querySelector("#confirm-email")
+			.querySelector("#confirmemail")
 			.addEventListener("blur", (event) => {
 				validateEmail(event);
 				validateConfirmation(
@@ -411,7 +411,7 @@
 
 		//validating contact number
 		document
-			.querySelector("#contact-no")
+			.querySelector("#contactno")
 			.addEventListener("blur", function (event) {
 				let error = event.target.nextElementSibling;
 				error.innerText = "";
@@ -502,7 +502,7 @@
 
 		//confirm password validation
 		document
-			.querySelector("#confirm-passkey")
+			.querySelector("#confirmpasskey")
 			.addEventListener("blur", function (event) {
 				try {
 					var error = document.querySelectorAll(".error-messg")[5];

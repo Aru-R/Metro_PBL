@@ -1,8 +1,8 @@
-<% layout('layouts/boilerplate')%>
+<% layout('../layouts/boilerplate')%>
 
 <!--Main wrapper-->
 <div class="wrapper">
-	<h1>Login</h1>
+	<h1>Available Passes</h1>
 
 	<!--form container-->
 	<div class="form-container">
@@ -12,13 +12,13 @@
 				<div class="flex-item">
 					
 
-					<!--email field-->
+					<!--daily pass-->
 					<div class="field-container">
 						<label for="email"
-							>Email: <span class="required">*</span></label
+							>Daily Pass: </label
 						>
 						<input
-							type="email"
+							type="date"
 							name="email"
 							id="email"
 							placeholder="Your email"
@@ -27,19 +27,19 @@
 						<span class="error-messg"></span>
 					</div>
 
-		
+                    <div class="center"><input type="submit" value="Buy Daily Pass" /></div>
 				</div>
 				<div class="flex-item">
 					
 
-					<!--password field-->
+					<!--weekly pass-->
 					<div class="field-container">
 						<label for="passkey"
-							>Password: <span class="required">*</span></label
+							>Weekly Pass: </label
 						>
 						<div class="passkey-box">
 							<input
-								type="password"
+								type="date"
 								name="passkey"
 								id="passkey"
 								class="passkey"
@@ -54,12 +54,11 @@
 						</div>
 						<span class="error-messg"></span>
 					</div>
-
+                    <div class="center"><input type="submit" value="Buy Weekly Pass" /></div>
 					
 				</div>
 			</div>
-			<!--Submit button-->
-			<div class="center"><input type="submit" value="Login" /></div>
+
 		</form>
 	</div>
 </div>
