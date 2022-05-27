@@ -48,7 +48,7 @@ const userSchema = new mongoose.Schema({
             type: String,
             required: true
         }
-    }]
+    }],
 })
 
 userSchema.virtual('passes', {
@@ -69,7 +69,7 @@ userSchema.methods.toJSON = function () {
 
 userSchema.methods.generateAuthToken = async function () {
     const user = this;
-    const token = jwt.sign({ _id: user._id.toString() }, "thisismylittlesecret");
+    const token = jwt.sign({ _id: user._id.toString() }, "lolthisismylittlesecret");
 
     user.tokens = user.tokens.concat({ token });
     await user.save();

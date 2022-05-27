@@ -3,7 +3,9 @@ const User = require('../models/user')
 const auth = require('../middleware/auth')
 const router = new express.Router()
 
-router.post('/users', async (req, res) => {
+
+
+router.post('/register', async (req, res) => {
     console.log(req.body)
     const {fullname, email, passkey, contactno } = req.body
     const user = new User({name: fullname, email, password: passkey, mobilePhone: contactno})
@@ -11,67 +13,56 @@ router.post('/users', async (req, res) => {
         await user.save()
         console.log('check-1')
         const token = await user.generateAuthToken()
+        req.session.token = token
         console.log('check-2')
-        res.header('x-auth-token', token)
         res.redirect('/')
-        console.log('check-3')
     } catch (e) {
         res.status(400).send(e)
     }
 })
 
-router.post('/users/login', async (req, res) => {
+router.post('/login', async (req, res) => {
     try {
-        const user = await User.findByCredentials(req.body.email, req.body.password)
+        const {email, passkey: password} = req.body
+        const user = await User.findByCredentials(email, password)
         const token = await user.generateAuthToken()
-        res.send({ user, token })
+        console.log("user",user)
+        console.log("user token",token)
+        req.session.token = token
+        res.redirect('/')
     } catch (e) {
-        res.status(400).send()
+        req.flash('error', 'Invalid credentials')
+        res.redirect('/loginerror')
     }
 })
 
-router.post('/users/logout', auth, async (req, res) => {
+router.get('/logout', auth, async (req, res) => {
+    console.log("before tokens:",req.user.tokens)
     try {
         req.user.tokens = req.user.tokens.filter((token) => {
             return token.token !== req.token
         })
+        console.log("after tokens:",req.user.tokens)
+        req.session.destroy()
         await req.user.save()
-
-        res.send()
+        res.redirect('/')
     } catch (e) {
         res.status(500).send()
     }
 })
 
-router.post('/users/logoutAll', auth, async (req, res) => {
-    try {
-        req.user.tokens = []
-        await req.user.save()
-        res.send()
-    } catch (e) {
-        res.status(500).send()
-    }
+router.get('/register', async (req, res) => {
+    res.render('register')
 })
 
-router.get('/', (req, res) => {
-    res.render('index')
-})
-
-router.get('/booking/new', (req, res) => {
-    res.render('new')
-})
-
-router.get('/booking/login', (req, res) => {
+router.get('/login', async (req, res) => {
     res.render('login')
 })
 
-router.get('/booking/pass', async (req, res) => {
-    try {
-        res.render('pass')
-    } catch (e) {
-        res.status(500).send(e)
-    }
-})
+
+
+
+
 
 // router.patch('/users/me', auth, async (req, res) => {
 //     const updates = Object.keys(req.body)
