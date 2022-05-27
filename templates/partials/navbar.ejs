@@ -1,4 +1,43 @@
-<nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
+<nav class="navbar navbar-expand-md navbar-dark bg-dark">
+    <div class="container-fluid">
+        <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
+            <ul class="navbar-nav me-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/booking/showpass">Book Pass</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/booking/getuserpass">Your Passes</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/routes">View Routes</a>
+                </li>
+            </ul>
+        </div>
+        <div class="mx-auto order-0">
+            <a class="navbar-brand mx-auto" href="/">Pune Metro</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".dual-collapse2">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
+        <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
+            <ul class="navbar-nav ms-auto">
+				<% if(!currentUser) {%>
+                <li class="nav-item">
+                    <a class="nav-link ml-auto" href="/users/login">Login</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link ml-auto" href="/users/register">Register</a>
+                </li>
+				<% } else {%>
+                <li class="nav-item">
+                    <a class="nav-link ml-auto" href="/users/logout">Logout</a>
+                </li>
+				<% } %>
+            </ul>
+        </div>
+    </div>
+</nav>
+<!-- <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
 	<div class="container-fluid">
 		<a class="navbar-brand" href="/">Pune Metro</a>
 		<button
@@ -14,18 +53,17 @@
 		</button>
 		<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
 			<div class="navbar-nav">
-				<!-- <a class="nav-link" aria-current="page" href="/">Home</a> -->
+				
 				<a class="nav-link" href="/booking/showpass">Book Pass</a>
 				<a class="nav-link" href="/booking/getuserpass">Your Passes</a>
-			</div>
-			<div class="navbar-nav ml-auto">
+				<a class="nav-link" href="/routes">View Routes</a>
 				<% if(!currentUser) {%>
-				<a class="nav-link" href="/users/login">Login</a>
-				<a class="nav-link" href="/users/register">Register</a>
+				<a class="nav-link ml-auto" href="/users/login">Login</a>
+				<a class="nav-link ml-auto" href="/users/register">Register</a>
 				<% } else {%>
-				<a class="nav-link" href="/users/logout">Logout</a>
+				<a class="nav-link ml-auto" href="/users/logout">Logout</a>
 				<% } %>
-			</div>
+		</div>
 		</div>
 	</div>
-</nav>
+</nav> -->
