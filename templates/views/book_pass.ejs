@@ -2,57 +2,32 @@
 
 <!--Main wrapper-->
 <div class="wrapper">
-	<h1>Login</h1>
+	<h1>Available Passes</h1>
 
 	<!--form container-->
 	<div class="form-container">
-		<form action="/users/login" method="POST">
+		<form action="/booking/bookpass" method="POST">
 			<!--flexbox and it's items-->
 			<div class="flex">
 				<div class="flex-item">
-					<!--email field-->
+					<!--daily pass-->
 					<div class="field-container">
-						<label for="email"
-							>Email: <span class="required">*</span></label
-						>
+						<label for="dayPass">Daily Pass: </label>
 						<input
-							type="email"
-							name="email"
-							id="email"
-							placeholder="Your email"
+							type="date"
+							name="dayPass"
+							id="dayPass"
+							placeholder="Daily Pass"
 							required="required"
 						/>
+						<span class="error-messg"></span>
 					</div>
-				</div>
-				<div class="flex-item">
-					<!--password field-->
-					<div class="field-container">
-						<label for="passkey"
-							>Password: <span class="required">*</span></label
-						>
-						<div class="passkey-box">
-							<input
-								type="password"
-								name="passkey"
-								id="passkey"
-								class="passkey"
-								placeholder="Password"
-								required="required"
-							/>
-							<span
-								class="passkey-icon"
-								data-display-passkey="off"
-								><i class="fas fa-eye"></i>
-							</span>
-						</div>
+
+					<div class="center">
+						<input type="submit" value="Buy Daily Pass" />
 					</div>
 				</div>
 			</div>
-			<% if (typeof error !== 'undefined' && error.length > 0) {%>
-			<span class="error-messg"><%= error[0] %> </span>
-			<% } %>
-			<!--Submit button-->
-			<div class="center"><input type="submit" value="Login" /></div>
 		</form>
 	</div>
 </div>
