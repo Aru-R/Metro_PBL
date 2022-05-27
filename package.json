@@ -6,8 +6,8 @@
   "scripts": {
     "start": "node src/index.js",
     "dev": "nodemon src/index.js -e js,html,css,ejs",
-    "mongod": "C:/Users/Ayush/mongodb/bin/mongod.exe --dbpath C:/Users/Ayush/mongodb-data",
-    "mongo": "C:/Users/Ayush/mongodb/bin/mongo.exe"
+    "mongod": "C:/%HomePath%/mongodb/bin/mongod.exe --dbpath C:/%HomePath%/mongodb-data",
+    "mongo": "C:/%HomePath%/mongodb/bin/mongo.exe"
   },
   "keywords": [],
   "author": "",

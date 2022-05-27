@@ -75,6 +75,9 @@ app.get('/', (req, res) => {
 app.use("/users", userRouter)
 app.use("/booking", bookingRouter)
 
+app.get('/routes', (req, res) => {
+    res.render('route')
+})
 
 app.get('/error', async (req, res) => {
     res.render('caution')
